@@ -19,7 +19,13 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+
+        backgroundColor: Colors.redAccent,
+        centerTitle: true,
+        title: Container(
+          height: 50,
+          child: Image.asset("assets/images/pokedex_logo.png"),
+        )
       ),
       body: Observer(builder: (context){
         if(homeController.pokemons.error != null){
@@ -40,20 +46,14 @@ class _HomePageState extends State<HomePage> {
           return ListView.builder(
             itemCount: list.length,
             itemBuilder: (BuildContext context, int index){
+              print(list[index]);
               return ListTile(
                 title: Text(list[index].name),
+
               );
             },
           );
           },
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: (){
-//          Navigator.pushNamed(context, '/other/${homeController.text}');
-//            Modular.to.pushNamed('/other/${homeController.text}');
-            Modular.to.pushNamed('/other');
-        },
       ),
     );
   }
