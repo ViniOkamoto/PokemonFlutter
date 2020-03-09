@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:slidy_structure/app/pages/home/components/pokemon_tile_widget.dart';
 import 'package:slidy_structure/app/pages/home/home_controller.dart';
 
 class HomePage extends StatefulWidget {
@@ -43,15 +44,16 @@ class _HomePageState extends State<HomePage> {
           return Center(child: CircularProgressIndicator());
         }
           var list = homeController.pokemons.value;
-          return ListView.builder(
-            itemCount: list.length,
-            itemBuilder: (BuildContext context, int index){
-              print(list[index]);
-              return ListTile(
-                title: Text(list[index].name),
+          return GridView.builder(
+              gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount( crossAxisCount: 3),
+              padding: EdgeInsets.all(12),
+              physics: BouncingScrollPhysics(),
+              itemCount: list.length,
+              addAutomaticKeepAlives: false,
+              itemBuilder: (context, index){
+                return PokemonTileWidget(list[index]);
+              },
 
-              );
-            },
           );
           },
       ),

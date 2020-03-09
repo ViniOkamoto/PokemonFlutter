@@ -16,6 +16,8 @@ abstract class _HomeControllerBase with Store {
    fetchPokemons();
  }
 
+
+
  @action
  fetchPokemons(){
   pokemons = repository.getAllPokemons().asObservable();

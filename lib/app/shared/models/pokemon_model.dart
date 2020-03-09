@@ -1,16 +1,14 @@
 class PokemonModel {
   List<Abilities> abilities;
   int baseExperience;
-  List<GameIndices> gameIndices;
   int height;
-  List<HeldItems> heldItems;
   int id;
   bool isDefault;
   String locationAreaEncounters;
   List<Moves> moves;
   String name;
   int order;
-  Ability species;
+  Basic species;
   Sprites sprites;
   List<Stats> stats;
   List<Types> types;
@@ -19,9 +17,7 @@ class PokemonModel {
   PokemonModel(
       {this.abilities,
         this.baseExperience,
-        this.gameIndices,
         this.height,
-        this.heldItems,
         this.id,
         this.isDefault,
         this.locationAreaEncounters,
@@ -42,19 +38,7 @@ class PokemonModel {
       });
     }
     baseExperience = json['base_experience'];
-    if (json['game_indices'] != null) {
-      gameIndices = new List<GameIndices>();
-      json['game_indices'].forEach((v) {
-        gameIndices.add(new GameIndices.fromJson(v));
-      });
-    }
     height = json['height'];
-    if (json['held_items'] != null) {
-      heldItems = new List<HeldItems>();
-      json['held_items'].forEach((v) {
-        heldItems.add(new HeldItems.fromJson(v));
-      });
-    }
     id = json['id'];
     isDefault = json['is_default'];
     locationAreaEncounters = json['location_area_encounters'];
@@ -67,7 +51,7 @@ class PokemonModel {
     name = json['name'];
     order = json['order'];
     species =
-    json['species'] != null ? new Ability.fromJson(json['species']) : null;
+    json['species'] != null ? new Basic.fromJson(json['species']) : null;
     sprites =
     json['sprites'] != null ? new Sprites.fromJson(json['sprites']) : null;
     if (json['stats'] != null) {
@@ -91,13 +75,7 @@ class PokemonModel {
       data['abilities'] = this.abilities.map((v) => v.toJson()).toList();
     }
     data['base_experience'] = this.baseExperience;
-    if (this.gameIndices != null) {
-      data['game_indices'] = this.gameIndices.map((v) => v.toJson()).toList();
-    }
     data['height'] = this.height;
-    if (this.heldItems != null) {
-      data['held_items'] = this.heldItems.map((v) => v.toJson()).toList();
-    }
     data['id'] = this.id;
     data['is_default'] = this.isDefault;
     data['location_area_encounters'] = this.locationAreaEncounters;
@@ -124,7 +102,7 @@ class PokemonModel {
 }
 
 class Abilities {
-  Ability ability;
+  Basic ability;
   bool isHidden;
   int slot;
 
@@ -132,7 +110,7 @@ class Abilities {
 
   Abilities.fromJson(Map<String, dynamic> json) {
     ability =
-    json['ability'] != null ? new Ability.fromJson(json['ability']) : null;
+    json['ability'] != null ? new Basic.fromJson(json['ability']) : null;
     isHidden = json['is_hidden'];
     slot = json['slot'];
   }
@@ -148,13 +126,13 @@ class Abilities {
   }
 }
 
-class Ability {
+class Basic {
   String name;
   String url;
 
-  Ability({this.name, this.url});
+  Basic({this.name, this.url});
 
-  Ability.fromJson(Map<String, dynamic> json) {
+  Basic.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     url = json['url'];
   }
@@ -167,87 +145,15 @@ class Ability {
   }
 }
 
-class GameIndices {
-  int gameIndex;
-  Ability version;
-
-  GameIndices({this.gameIndex, this.version});
-
-  GameIndices.fromJson(Map<String, dynamic> json) {
-    gameIndex = json['game_index'];
-    version =
-    json['version'] != null ? new Ability.fromJson(json['version']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['game_index'] = this.gameIndex;
-    if (this.version != null) {
-      data['version'] = this.version.toJson();
-    }
-    return data;
-  }
-}
-
-class HeldItems {
-  Ability item;
-  List<VersionDetails> versionDetails;
-
-  HeldItems({this.item, this.versionDetails});
-
-  HeldItems.fromJson(Map<String, dynamic> json) {
-    item = json['item'] != null ? new Ability.fromJson(json['item']) : null;
-    if (json['version_details'] != null) {
-      versionDetails = new List<VersionDetails>();
-      json['version_details'].forEach((v) {
-        versionDetails.add(new VersionDetails.fromJson(v));
-      });
-    }
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.item != null) {
-      data['item'] = this.item.toJson();
-    }
-    if (this.versionDetails != null) {
-      data['version_details'] =
-          this.versionDetails.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
-}
-
-class VersionDetails {
-  int rarity;
-  Ability version;
-
-  VersionDetails({this.rarity, this.version});
-
-  VersionDetails.fromJson(Map<String, dynamic> json) {
-    rarity = json['rarity'];
-    version =
-    json['version'] != null ? new Ability.fromJson(json['version']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['rarity'] = this.rarity;
-    if (this.version != null) {
-      data['version'] = this.version.toJson();
-    }
-    return data;
-  }
-}
 
 class Moves {
-  Ability move;
+  Basic move;
   List<VersionGroupDetails> versionGroupDetails;
 
   Moves({this.move, this.versionGroupDetails});
 
   Moves.fromJson(Map<String, dynamic> json) {
-    move = json['move'] != null ? new Ability.fromJson(json['move']) : null;
+    move = json['move'] != null ? new Basic.fromJson(json['move']) : null;
     if (json['version_group_details'] != null) {
       versionGroupDetails = new List<VersionGroupDetails>();
       json['version_group_details'].forEach((v) {
@@ -271,8 +177,8 @@ class Moves {
 
 class VersionGroupDetails {
   int levelLearnedAt;
-  Ability moveLearnMethod;
-  Ability versionGroup;
+  Basic moveLearnMethod;
+  Basic versionGroup;
 
   VersionGroupDetails(
       {this.levelLearnedAt, this.moveLearnMethod, this.versionGroup});
@@ -280,10 +186,10 @@ class VersionGroupDetails {
   VersionGroupDetails.fromJson(Map<String, dynamic> json) {
     levelLearnedAt = json['level_learned_at'];
     moveLearnMethod = json['move_learn_method'] != null
-        ? new Ability.fromJson(json['move_learn_method'])
+        ? new Basic.fromJson(json['move_learn_method'])
         : null;
     versionGroup = json['version_group'] != null
-        ? new Ability.fromJson(json['version_group'])
+        ? new Basic.fromJson(json['version_group'])
         : null;
   }
 
@@ -302,45 +208,19 @@ class VersionGroupDetails {
 
 class Sprites {
   String backDefault;
-  Null backFemale;
-  String backShiny;
-  Null backShinyFemale;
   String frontDefault;
-  Null frontFemale;
-  String frontShiny;
-  Null frontShinyFemale;
 
-  Sprites(
-      {this.backDefault,
-        this.backFemale,
-        this.backShiny,
-        this.backShinyFemale,
-        this.frontDefault,
-        this.frontFemale,
-        this.frontShiny,
-        this.frontShinyFemale});
+  Sprites({this.backDefault, this.frontDefault,});
 
   Sprites.fromJson(Map<String, dynamic> json) {
     backDefault = json['back_default'];
-    backFemale = json['back_female'];
-    backShiny = json['back_shiny'];
-    backShinyFemale = json['back_shiny_female'];
     frontDefault = json['front_default'];
-    frontFemale = json['front_female'];
-    frontShiny = json['front_shiny'];
-    frontShinyFemale = json['front_shiny_female'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['back_default'] = this.backDefault;
-    data['back_female'] = this.backFemale;
-    data['back_shiny'] = this.backShiny;
-    data['back_shiny_female'] = this.backShinyFemale;
     data['front_default'] = this.frontDefault;
-    data['front_female'] = this.frontFemale;
-    data['front_shiny'] = this.frontShiny;
-    data['front_shiny_female'] = this.frontShinyFemale;
     return data;
   }
 }
@@ -348,14 +228,14 @@ class Sprites {
 class Stats {
   int baseStat;
   int effort;
-  Ability stat;
+  Basic stat;
 
   Stats({this.baseStat, this.effort, this.stat});
 
   Stats.fromJson(Map<String, dynamic> json) {
     baseStat = json['base_stat'];
     effort = json['effort'];
-    stat = json['stat'] != null ? new Ability.fromJson(json['stat']) : null;
+    stat = json['stat'] != null ? new Basic.fromJson(json['stat']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -369,16 +249,15 @@ class Stats {
   }
 }
 
-
 class Types {
   int slot;
-  Ability type;
+  Basic type;
 
   Types({this.slot, this.type});
 
   Types.fromJson(Map<String, dynamic> json) {
     slot = json['slot'];
-    type = json['type'] != null ? new Ability.fromJson(json['type']) : null;
+    type = json['type'] != null ? new Basic.fromJson(json['type']) : null;
   }
 
   Map<String, dynamic> toJson() {
