@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:slidy_structure/app/pages/home/components/appbar_widget.dart';
+import 'package:slidy_structure/app/pages/home/components/Paint_widget.dart';
+import 'package:slidy_structure/app/pages/home/components/pokeball_widget.dart';
 import 'package:slidy_structure/app/pages/home/components/pokemon_tile_widget.dart';
+import 'package:slidy_structure/app/pages/home/components/tela_pokemon/tela_pokemon_widget.dart';
 import 'package:slidy_structure/app/pages/home/home_controller.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,50 +18,73 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  AnimationController animationController;
 
   final homeController = Modular.get<HomeController>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-
-        backgroundColor: Colors.redAccent,
-        centerTitle: true,
-        title: Container(
-          height: 50,
-          child: Image.asset("assets/images/pokedex_logo.png"),
-        )
+      appBar: MyCustomAppBar(
+        height: 200,
       ),
-      body: Observer(builder: (context){
-        if(homeController.pokemons.error != null){
-          return Center(
-            child: RaisedButton(
-              child: Text("Press again"),
-              onPressed: (){
-                homeController.fetchPokemons();
-              },
+      backgroundColor: Colors.red[600],
+      body: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+               TelaPokemonWidget(),
+              ],
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 20),
+              child: Container(
+                  width: 100,
+                  height: 100,
+                  color: Colors.white
+              ),
             )
-          );
-        }
 
-        if(homeController.pokemons.value == null){
-          return Center(child: CircularProgressIndicator());
-        }
-          var list = homeController.pokemons.value;
-          return GridView.builder(
-              gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount( crossAxisCount: 3),
-              padding: EdgeInsets.all(12),
-              physics: BouncingScrollPhysics(),
-              itemCount: list.length,
-              addAutomaticKeepAlives: false,
-              itemBuilder: (context, index){
-                return PokemonTileWidget(list[index]);
-              },
-
-          );
-          },
+          ],
+        ),
       ),
+//      Observer(builder: (context){
+//        if(homeController.pokemons.error != null){
+//          return Center(
+//            child: RaisedButton(
+//              child: Text("Press again"),
+//              onPressed: (){
+//                homeController.fetchPokemons();
+//              },
+//            )
+//          );
+//        }
+//
+//        if(homeController.pokemons.value == null){
+//          return PokeProgress();
+//        }
+//          var list = homeController.pokemons.value;
+//          return GridView.builder(
+//              gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount( crossAxisCount: 3),
+//              padding: EdgeInsets.all(12),
+//              physics: BouncingScrollPhysics(),
+//              itemCount: list.length,
+//              addAutomaticKeepAlives: false,
+//              itemBuilder: (context, index){
+//                return PokemonTileWidget(list[index]);
+//              },
+//
+//          );
+//          },
+//      ),
     );
+  }
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
   }
 }

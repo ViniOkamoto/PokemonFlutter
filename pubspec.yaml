@@ -21,6 +21,7 @@ dependencies:
   flutter_modular: ^0.5.3
   mobx:
   flutter_mobx:
+  percent_indicator:
   flutter:
     sdk: flutter
 

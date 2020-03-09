@@ -18,7 +18,7 @@ class PokemonTileWidget extends StatelessWidget {
 
               Image.network("${pokemonModel.sprites.frontDefault}", height: 90,),
 
-              Text("${pokemonModel.name}"),
+              Text("${pokemonModel.name}", style: TextStyle()),
 
             ],
           ),

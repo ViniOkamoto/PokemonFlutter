@@ -1,4 +1,6 @@
+import 'package:slidy_structure/app/pages/home/components/tela_pokemon/tela_pokemon_controller.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/animation.dart';
 import 'package:slidy_structure/app/pages/home/home_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:slidy_structure/app/pages/home/home_page.dart';
@@ -7,6 +9,7 @@ import 'package:slidy_structure/app/shared/repositories/poke_repository.dart';
 class HomeModule extends ChildModule {
   @override
   List<Bind> get binds => [
+        Bind((i) => TelaPokemonController()),
         Bind((i) => HomeController(i.get<PokeRepository>())),
         Bind((i) => PokeRepository(i.get<Dio>())),
       ];
