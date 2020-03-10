@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'home_controller.dart';
+part of 'pokedex_controller.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,8 +8,8 @@ part of 'home_controller.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$HomeController on _HomeControllerBase, Store {
-  final _$pokemonsAtom = Atom(name: '_HomeControllerBase.pokemons');
+mixin _$PokedexController on _PokedexControllerBase, Store {
+  final _$pokemonsAtom = Atom(name: '_PokedexControllerBase.pokemons');
 
   @override
   ObservableFuture<List<PokemonModel>> get pokemons {
@@ -26,16 +26,16 @@ mixin _$HomeController on _HomeControllerBase, Store {
     }, _$pokemonsAtom, name: '${_$pokemonsAtom.name}_set');
   }
 
-  final _$_HomeControllerBaseActionController =
-      ActionController(name: '_HomeControllerBase');
+  final _$_PokedexControllerBaseActionController =
+      ActionController(name: '_PokedexControllerBase');
 
   @override
   String increment() {
-    final _$actionInfo = _$_HomeControllerBaseActionController.startAction();
+    final _$actionInfo = _$_PokedexControllerBaseActionController.startAction();
     try {
       return super.increment();
     } finally {
-      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
+      _$_PokedexControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 

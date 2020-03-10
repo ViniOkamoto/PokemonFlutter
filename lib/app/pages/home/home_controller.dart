@@ -7,19 +7,32 @@ part 'home_controller.g.dart';
 class HomeController = _HomeControllerBase with _$HomeController;
 
 abstract class _HomeControllerBase with Store {
- final PokeRepository repository;
-
- @observable
- ObservableFuture<List<PokemonModel>> pokemons;
-
- _HomeControllerBase(this.repository) {
-   fetchPokemons();
- }
+  final PokeRepository repository;
 
 
+  @observable
+  ObservableFuture<List<PokemonModel>> pokemons;
+  ObservableFuture<PokemonModel> pokemon;
+  String pokeIndex;
 
- @action
- fetchPokemons(){
-  pokemons = repository.getAllPokemons().asObservable();
- }
+  _HomeControllerBase(this.repository) {
+    fetchPokemons();
+  }
+
+
+  @action
+  String increment() {
+    int a = int.parse(pokeIndex);
+    a++;
+    return pokeIndex = a.toString();
+  }
+
+  getPokemon(){
+    pokemon = repository.getPokemon("2").asObservable();
+  }
+
+  fetchPokemons(){
+    pokemons = repository.getAllPokemons().asObservable();
+  }
+
 }
