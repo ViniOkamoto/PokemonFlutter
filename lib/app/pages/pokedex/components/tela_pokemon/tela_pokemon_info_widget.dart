@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:slidy_structure/app/shared/models/pokemon_model.dart';
+import 'package:slidy_structure/app/shared/utils/constants.dart';
 
 class TelaInfoWidget extends StatelessWidget {
   PokemonModel _pokemon;
@@ -41,7 +42,7 @@ class TelaInfoWidget extends StatelessWidget {
             ),
             child: Column(
               children: <Widget>[
-                Text("Type:"),
+                Text("TYPE:"),
                 Container(
                   width: 100,
                   height: 100,
@@ -56,12 +57,12 @@ class TelaInfoWidget extends StatelessWidget {
                               width: 90,
                               height: 15,
                               decoration: BoxDecoration(
-                                color: Colors.grey,
+                                color: catchColor(type[index].type.name),
                                 borderRadius: BorderRadius.all(Radius.circular(8.0)
                                 ),
                               ),
                               child: Center(
-                                child: Text(type[index].type.name),
+                                child: Text(type[index].type.name.toUpperCase(), style: TextStyle(color: Colors.white),),
                               ),
                             ),
                           ),
@@ -72,12 +73,12 @@ class TelaInfoWidget extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                Text("Height"),
+                Text("HEIGHT"),
                 Text(_pokemon.height.toString()),
                 SizedBox(
                   height: 10,
                 ),
-                Text("Weight"),
+                Text("WEIGHT"),
                 Text(_pokemon.weight.toString()),
               ],
             )
@@ -91,7 +92,7 @@ class TelaInfoWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Text(pokemon.name , style: TextStyle(color: Colors.white, fontSize: 25),),
+            Text(pokemon.name.toUpperCase() , style: TextStyle(color: Colors.white, fontSize: 25),),
             Container(
               width: 100,
               height: 100,

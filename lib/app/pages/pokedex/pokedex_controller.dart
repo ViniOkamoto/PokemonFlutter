@@ -16,8 +16,7 @@ abstract class _PokedexControllerBase with Store {
  String pokeIndex;
 
  _PokedexControllerBase(this.repository) {
-  fetchPokemons();
-  getPokemon();
+  getPokemon("20");
  }
 
 
@@ -27,12 +26,17 @@ abstract class _PokedexControllerBase with Store {
   a++;
   return pokeIndex = a.toString();
  }
-
- getPokemon(){
-  pokemon = repository.getPokemon("2").asObservable();
+ String decrement() {
+  int a = int.parse(pokeIndex);
+  if(a > 1){
+   a++;
+   return pokeIndex = a.toString();
+  }
+   return null;
  }
 
- fetchPokemons(){
-  pokemons = repository.getAllPokemons().asObservable();
+ getPokemon(String pokeIndex){
+  pokemon = repository.getPokemon(pokeIndex).asObservable();
  }
+
 }
