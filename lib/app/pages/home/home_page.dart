@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:slidy_structure/app/pages/pokedex/components/pokeball_widget.dart';
+import 'file:///C:/Users/Vinicius%20Okamoto/Coding/PokemonSlidy/lib/app/shared/components/pokeball_widget.dart';
 import 'package:slidy_structure/app/pages/pokedex/components/pokemon_tile_widget.dart';
+import 'package:slidy_structure/app/shared/components/appbar_widget.dart';
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,11 +21,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
+      appBar: MyCustomAppBar(
+        height: 120
       ),floatingActionButton: FloatingActionButton(onPressed: (){
       Modular.to.pushReplacementNamed('/pokedex');
     },),
+      backgroundColor: Colors.red[600],
       body: Observer
         (builder: (context){
       if(homeController.pokemons.error != null){

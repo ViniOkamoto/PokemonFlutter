@@ -31,7 +31,7 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/background.png"),
+                image: AssetImage("assets/images/splash.gif"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -41,12 +41,6 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
             top: 150,
             child: Image.asset("assets/images/pokedex_logo.png"),
           ),
-          Positioned(
-            bottom: 175,
-            left: 125,
-            width: 150,
-            child: Image.asset("assets/images/5FBP.gif"),
-          )
         ],
         //        child: RotationTransition(
 //            turns: Tween(begin: 0.0, end: 1.0).animate(animationController),

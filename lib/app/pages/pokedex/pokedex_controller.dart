@@ -8,34 +8,41 @@ class PokedexController = _PokedexControllerBase with _$PokedexController;
 
 abstract class _PokedexControllerBase with Store {
  final PokeRepository repository;
-
+ _PokedexControllerBase(this.repository);
 
  @observable
  ObservableFuture<List<PokemonModel>> pokemons;
+ @observable
  ObservableFuture<PokemonModel> pokemon;
+ @observable
  String pokeIndex;
 
- _PokedexControllerBase(this.repository) {
-  getPokemon("20");
- }
-
-
  @action
- String increment() {
-  int a = int.parse(pokeIndex);
-  a++;
-  return pokeIndex = a.toString();
+  increment() {
+  int b = int.parse(pokeIndex);
+  if(b == 802) {
+   b = 1;
+  } else{
+  b++;
+  }
+  pokeIndex = b.toString();
+  getPokemon();
+
  }
- String decrement() {
+ @action
+  decrement() {
   int a = int.parse(pokeIndex);
   if(a > 1){
-   a++;
-   return pokeIndex = a.toString();
+   a--;
+
+  } else{
+   a = 802;
   }
-   return null;
+  pokeIndex = a.toString();
+  getPokemon();
  }
 
- getPokemon(String pokeIndex){
+ getPokemon(){
   pokemon = repository.getPokemon(pokeIndex).asObservable();
  }
 

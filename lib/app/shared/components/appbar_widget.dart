@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:slidy_structure/app/shared/components/paint_widget.dart';
 
 class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -24,6 +25,9 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   left: 20,
                   top: 15,
                   child: GestureDetector(
+                    onTap: (){
+                      Modular.to.pushReplacementNamed('/home');
+                    },
                     child: Container(
                       width: 70,
                       height: 70,
@@ -81,11 +85,11 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   ),
                 ),
                 Positioned(
-                  top: 1,
+                  top: 0,
                   right: 0,
                   child: Container(
                     width: 150,
-                    height: 60,
+                    height: 50,
                     child: Image.asset("assets/images/pokedex_logo.png"),
                   ),
                 )

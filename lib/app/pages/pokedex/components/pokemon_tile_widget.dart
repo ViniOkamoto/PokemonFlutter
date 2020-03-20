@@ -10,18 +10,23 @@ class PokemonTileWidget extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(10),
       child: Container(
-        color: Colors.redAccent,
+        decoration: BoxDecoration(
+          color: Colors.redAccent,
+          borderRadius: BorderRadius.all(Radius.circular(10))
+        ),
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
+          child: GestureDetector(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
 
-              Image.network("${pokemonModel.sprites.frontDefault}", height: 90,),
+                Image.network("${pokemonModel.sprites.frontDefault}", height: 90,),
 
-              Text("${pokemonModel.name}", style: TextStyle()),
+                Text("${pokemonModel.name}", style: TextStyle()),
 
-            ],
-          ),
+              ],
+            ),
+          )
         ),
       ),
     );
