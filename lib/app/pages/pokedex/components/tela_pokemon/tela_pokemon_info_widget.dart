@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'file:///C:/Users/Vinicius%20Okamoto/Coding/PokemonSlidy/lib/app/shared/components/pokeball_widget.dart';
 import 'package:slidy_structure/app/pages/pokedex/pokedex_controller.dart';
+import 'package:slidy_structure/app/shared/components/pokeball_widget.dart';
 import 'package:slidy_structure/app/shared/models/pokemon_model.dart';
 import 'package:slidy_structure/app/shared/utils/constants.dart';
 
