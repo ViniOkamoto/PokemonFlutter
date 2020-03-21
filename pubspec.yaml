@@ -22,6 +22,7 @@ dependencies:
   mobx:
   flutter_mobx:
   percent_indicator:
+  flutter_launcher_icons: ^0.7.2
   flutter:
     sdk: flutter
 
@@ -35,7 +36,10 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-
+flutter_icons:
+  image_path: "assets/images/Pokebola.png"
+  android: true
+  ios: true
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
