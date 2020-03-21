@@ -27,9 +27,6 @@ abstract class _HomeControllerBase with Store {
     return pokeIndex = a.toString();
   }
 
-  getPokemon(){
-    pokemon = repository.getPokemon("2").asObservable();
-  }
 
   fetchPokemons(){
     pokemons = repository.getAllPokemons().asObservable();

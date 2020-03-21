@@ -42,15 +42,22 @@ class _HomePageState extends State<HomePage> {
           return PokeProgress();
         }
           var list = homeController.pokemons.value;
-          return ListView.builder(
-              padding: EdgeInsets.all(12),
-              physics: BouncingScrollPhysics(),
-              itemCount: list.length,
-              addAutomaticKeepAlives: false,
-              itemBuilder: (context, index){
-                return PokemonTileWidget(list[index]);
-              },
-
+          return Stack(
+            fit: StackFit.expand,
+            children: <Widget>[
+              PokeBackground(
+                opacity: 1,
+              ),
+                ListView.builder(
+                  padding: EdgeInsets.all(12),
+                  physics: BouncingScrollPhysics(),
+                  itemCount: list.length,
+                  addAutomaticKeepAlives: false,
+                  itemBuilder: (context, index){
+                    return PokemonTileWidget(list[index]);
+                },
+                ),
+            ],
           );
           },
       ),

@@ -17,9 +17,8 @@ class PokeRepository {
     }
 
 
-  Future<List<PokemonModel>> getAllPokemons() async {
-    var response = await dio.get('/pokemon');
-
+  Future<List<PokemonModel>> getAllPokemons({String offset}) async {
+    var response = await dio.get('/pokemon?offset=0&limit=400');
     List<PokemonModel> list = [];
    try{
      for(var json in (response.data['results'] as List)){
@@ -29,7 +28,7 @@ class PokeRepository {
      }
      return list;
    }catch(error){
-     print(error);
+     return error;
    }
   }
 

@@ -26,26 +26,21 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          Container(
+      body: Container(
+        height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage("assets/images/splash.gif"),
                 fit: BoxFit.cover,
               ),
             ),
-          ),
-          Positioned(
-            left: 50,
-            top: 150,
-            child: Image.asset("assets/images/pokedex_logo.png"),
-          ),
-        ],
-        //        child: RotationTransition(
-//            turns: Tween(begin: 0.0, end: 1.0).animate(animationController),
-//
-//        ),
+            child: SafeArea(
+
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: Image.asset("assets/images/PokemonSlidy.png"),
+              ),
+            )
       ),
     );
   }

@@ -27,7 +27,7 @@ class TelaInfoWidget extends StatelessWidget {
             return Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                _ColunaPokemon(_pokemon.pokemon.value),
+                _ColunaPokemon(_pokemon.pokemon.value, _pokemon.pokeId),
                 _ColunaInfoType(context,_pokemon.pokemon.value),
               ],
             );
@@ -92,7 +92,7 @@ class TelaInfoWidget extends StatelessWidget {
     );
   }
 
-  Widget _ColunaPokemon(PokemonModel pokemon){
+  Widget _ColunaPokemon(PokemonModel pokemon, int id){
               return Padding(
                   padding: EdgeInsets.only(left: 20),
                   child: Column(
@@ -114,8 +114,18 @@ class TelaInfoWidget extends StatelessWidget {
                             color: Colors.white,
                             borderRadius: BorderRadius.all(Radius.circular(10))
                         ),
-                        child: Image.network(
-                          pokemon.sprites.frontDefault, fit: BoxFit.fill,),
+                        child: Stack(
+                          fit: StackFit.expand,
+                          alignment: Alignment.bottomRight,
+                          children: <Widget>[
+                            PokeBackground(
+                                height: 80,
+                                width: 80,
+                                opacity: 0.3,
+                            ),
+                            pokemon.sprites.frontDefault != null ? Image.network(pokemon.sprites.frontDefault, fit: BoxFit.fill) : Image.asset("assets/images/qual_pokemon.png", fit: BoxFit.fill)
+                          ],
+                        )
                       ),
                       Container(
                         width: 65,
@@ -126,7 +136,7 @@ class TelaInfoWidget extends StatelessWidget {
                           ),
                         ),
                         child: Center(
-                          child: Text("#" + pokemon.id.toString().padLeft(3, '0'),
+                          child: Text("#" + id.toString().padLeft(3, '0'),
                               style: TextStyle(
                                   fontSize: 25, fontWeight: FontWeight.w500)),
                         ),

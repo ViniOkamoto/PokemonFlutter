@@ -22,6 +22,8 @@ class _PokedexPageState extends State<PokedexPage> {
   @override
   Widget build(BuildContext context) {
     widget.index == null ? pokedexController.pokeIndex = "1" : pokedexController.pokeIndex = widget.index;
+    pokedexController.indexUrl = int.parse(pokedexController.pokeIndex);
+    pokedexController.pokeId = pokedexController.indexUrl;
     pokedexController.getPokemon();
     return Scaffold(
       appBar: MyCustomAppBar(
