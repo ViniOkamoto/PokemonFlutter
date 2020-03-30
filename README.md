@@ -10,6 +10,7 @@
 [![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)](https://travis-ci.org/badges/badgerbadgerbadger) [![Coverage Status](http://img.shields.io/coveralls/badges/badgerbadgerbadger.svg?style=flat-square)](https://coveralls.io/r/badges/badgerbadgerbadger) [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org) [![Badges](http://img.shields.io/:badges-4/4-ff6799.svg?style=flat-square)](https://github.com/badges/badgerbadgerbadger)
 
 <img src ="assets/images/PokeApresentacao.gif" height="600em"/>
+
 ## Features in Pokedex
 > I'm still working on the project if you want to contribute, or if you have any questions, contact me on [Linkedin](https://www.linkedin.com/in/vinicius-okamoto/)
 * List of Pokemons
