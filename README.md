@@ -1,4 +1,4 @@
-[GitHub Logo](assets/images/PokemonSlidy.png)
+![PokemonSlidy](assets/images/PokemonSlidy.png)
 # PokemonSlidy (Pokedex)
 
 > a recreation of our dear pokedex, with a little nostalgia
