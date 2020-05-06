@@ -85,7 +85,7 @@ $ flutter pub run build_runner watch --delete-conflict-outputs
 
 Reach out to me at one of the following places!
 
-- [Linkedin]()
+- [Linkedin](https://www.linkedin.com/in/vinicius-okamoto/)
 - Discord ***viniciusokamoto ID#5313***
 
 ---
