@@ -9,12 +9,13 @@ class HomeController = _HomeControllerBase with _$HomeController;
 abstract class _HomeControllerBase with Store {
   final PokeRepository repository;
 
+  ObservableList<PokemonModel> pokemons = ObservableList<PokemonModel>();
 
-  @observable
-  ObservableFuture<List<PokemonModel>> pokemons;
   ObservableFuture<PokemonModel> pokemon;
   String pokeIndex;
 
+  @observable
+  int offset = 0;
   _HomeControllerBase(this.repository) {
     fetchPokemons();
   }
@@ -29,7 +30,10 @@ abstract class _HomeControllerBase with Store {
 
 
   fetchPokemons(){
-    pokemons = repository.getAllPokemons().asObservable();
+    repository.getAllPokemons(offset: offset.toString()).then((value) => value.forEach((element) {
+      pokemons.add(element);
+    }));
+    offset += 20;
   }
 
 }

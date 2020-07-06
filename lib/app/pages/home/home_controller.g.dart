@@ -9,21 +9,21 @@ part of 'home_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$HomeController on _HomeControllerBase, Store {
-  final _$pokemonsAtom = Atom(name: '_HomeControllerBase.pokemons');
+  final _$offsetAtom = Atom(name: '_HomeControllerBase.offset');
 
   @override
-  ObservableFuture<List<PokemonModel>> get pokemons {
-    _$pokemonsAtom.context.enforceReadPolicy(_$pokemonsAtom);
-    _$pokemonsAtom.reportObserved();
-    return super.pokemons;
+  int get offset {
+    _$offsetAtom.context.enforceReadPolicy(_$offsetAtom);
+    _$offsetAtom.reportObserved();
+    return super.offset;
   }
 
   @override
-  set pokemons(ObservableFuture<List<PokemonModel>> value) {
-    _$pokemonsAtom.context.conditionallyRunInAction(() {
-      super.pokemons = value;
-      _$pokemonsAtom.reportChanged();
-    }, _$pokemonsAtom, name: '${_$pokemonsAtom.name}_set');
+  set offset(int value) {
+    _$offsetAtom.context.conditionallyRunInAction(() {
+      super.offset = value;
+      _$offsetAtom.reportChanged();
+    }, _$offsetAtom, name: '${_$offsetAtom.name}_set');
   }
 
   final _$_HomeControllerBaseActionController =
@@ -41,7 +41,7 @@ mixin _$HomeController on _HomeControllerBase, Store {
 
   @override
   String toString() {
-    final string = 'pokemons: ${pokemons.toString()}';
+    final string = 'offset: ${offset.toString()}';
     return '{$string}';
   }
 }

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class PokeProgress extends StatefulWidget {
+  final double width;
+  final double height;
+  PokeProgress({this.width, this.height});
   @override
   _PokeProgressState createState() => new _PokeProgressState();
 }
@@ -27,8 +30,8 @@ class _PokeProgressState extends State<PokeProgress>
       child: new AnimatedBuilder(
         animation: animationController,
         child: new Container(
-          height: 70.0,
-          width: 70.0,
+          height: this.widget.height,
+          width: this.widget.width,
           child: new Image.asset('assets/images/Pokebola.png'),
         ),
         builder: (BuildContext context, Widget _widget) {

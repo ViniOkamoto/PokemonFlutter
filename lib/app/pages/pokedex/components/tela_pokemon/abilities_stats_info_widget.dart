@@ -26,7 +26,7 @@ class AbilityStatsInfo extends StatelessWidget {
                   Observer(
                     builder: (_){
                       if(_pokemon.pokemon.value == null){
-                        return PokeProgress();
+                        return PokeProgress(width: 70, height: 70,);
                       }
                       return Container(
                         width: MediaQuery.of(context).size.width/2,
@@ -50,7 +50,7 @@ class AbilityStatsInfo extends StatelessWidget {
                   Observer(
                     builder: (_){
                       if(_pokemon.pokemon.value == null){
-                        return PokeProgress();
+                        return PokeProgress(height: 70, width: 70,);
                       }
                       return Container(
                           width: MediaQuery.of(context).size.width/3,

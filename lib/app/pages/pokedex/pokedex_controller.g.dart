@@ -60,6 +60,23 @@ mixin _$PokedexController on _PokedexControllerBase, Store {
     }, _$pokeIndexAtom, name: '${_$pokeIndexAtom.name}_set');
   }
 
+  final _$pokeIdAtom = Atom(name: '_PokedexControllerBase.pokeId');
+
+  @override
+  int get pokeId {
+    _$pokeIdAtom.context.enforceReadPolicy(_$pokeIdAtom);
+    _$pokeIdAtom.reportObserved();
+    return super.pokeId;
+  }
+
+  @override
+  set pokeId(int value) {
+    _$pokeIdAtom.context.conditionallyRunInAction(() {
+      super.pokeId = value;
+      _$pokeIdAtom.reportChanged();
+    }, _$pokeIdAtom, name: '${_$pokeIdAtom.name}_set');
+  }
+
   final _$_PokedexControllerBaseActionController =
       ActionController(name: '_PokedexControllerBase');
 
@@ -86,7 +103,7 @@ mixin _$PokedexController on _PokedexControllerBase, Store {
   @override
   String toString() {
     final string =
-        'pokemons: ${pokemons.toString()},pokemon: ${pokemon.toString()},pokeIndex: ${pokeIndex.toString()}';
+        'pokemons: ${pokemons.toString()},pokemon: ${pokemon.toString()},pokeIndex: ${pokeIndex.toString()},pokeId: ${pokeId.toString()}';
     return '{$string}';
   }
 }

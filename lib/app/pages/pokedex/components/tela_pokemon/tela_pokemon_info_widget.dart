@@ -22,7 +22,7 @@ class TelaInfoWidget extends StatelessWidget {
         child: Observer(
           builder: (_){
             if(_pokemon.pokemon.value == null){
-              return PokeProgress();
+              return PokeProgress(width: 70, height: 70,);
             }
             return Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -123,6 +123,7 @@ class TelaInfoWidget extends StatelessWidget {
                                 width: 80,
                                 opacity: 0.3,
                             ),
+
                             pokemon.sprites.frontDefault != null ? Image.network(pokemon.sprites.frontDefault, fit: BoxFit.fill) : Image.asset("assets/images/qual_pokemon.png", fit: BoxFit.fill)
                           ],
                         )

@@ -27,21 +27,13 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.red[600],
       body: Observer
         (builder: (context){
-      if(homeController.pokemons.error != null){
-          return Center(
-            child: RaisedButton(
-              child: Text("Press again"),
-              onPressed: (){
-                homeController.fetchPokemons();
-              },
-            )
-          );
-        }
+      if(homeController.pokemons.length == 0 && homeController.pokemons != null){
+        return PokeProgress(height: 70, width: 70,);
+      }
+        if(homeController.pokemons == null){
 
-        if(homeController.pokemons.value == null){
-          return PokeProgress();
         }
-          var list = homeController.pokemons.value;
+          var list = homeController.pokemons;
           return Container(
             height: MediaQuery.of(context).size.height,
             child: Stack(
@@ -56,10 +48,17 @@ class _HomePageState extends State<HomePage> {
                 ListView.builder(
                   padding: EdgeInsets.all(12),
                   physics: BouncingScrollPhysics(),
-                  itemCount: list.length,
+                  itemCount: list.length + 1,
                   addAutomaticKeepAlives: false,
                   itemBuilder: (context, index){
+                    if(index < list.length){
                     return PokemonTileWidget(list[index]);
+                    } else if(index > 1){
+                      homeController.fetchPokemons();
+                      return PokeProgress(width: 50, height: 50,);
+                    } else {
+                      return Container();
+                    }
                   },
                 ),
               ],
