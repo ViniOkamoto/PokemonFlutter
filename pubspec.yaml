@@ -1,5 +1,5 @@
 name: slidy_structure
-description: &#x27;A new Flutter project. Created by Slidy&#x27;
+description: Pokedex app;
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -14,11 +14,11 @@ description: &#x27;A new Flutter project. Created by Slidy&#x27;
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.8.0 <3.0.0"
 
 dependencies:
   dio: ^3.0.9
-  flutter_modular: ^0.5.3
+  flutter_modular:
   mobx:
   flutter_mobx:
   percent_indicator:

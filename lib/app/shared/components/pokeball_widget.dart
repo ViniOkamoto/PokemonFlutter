@@ -16,8 +16,7 @@ class _PokeProgressState extends State<PokeProgress>
   void initState() {
     super.initState();
     animationController = new AnimationController(
-      vsync: this,
-      duration: new Duration(seconds: 10),
+      duration: new Duration(seconds: 10), vsync: this,
     );
 
     animationController.repeat();

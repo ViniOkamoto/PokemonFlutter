@@ -12,8 +12,8 @@ class PokedexModule extends ChildModule {
       ];
 
   @override
-  List<Router> get routers => [
-        Router('/:index', child: (_, args) => PokedexPage(index: args.params['index'],)),
+  List<ModularRouter> get routers => [
+    ModularRouter('/:index', child: (_, args) => PokedexPage(index: args.params['index'],)),
       ];
 
   static Inject get to => Inject<PokedexModule>.of();

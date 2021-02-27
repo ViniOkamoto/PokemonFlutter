@@ -4,6 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:slidy_structure/app/pages/home/components/pokemon_tile_widget.dart';
 import 'package:slidy_structure/app/shared/components/appbar_widget.dart';
 import 'package:slidy_structure/app/shared/components/pokeball_widget.dart';
+
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
@@ -21,18 +22,17 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyCustomAppBar(
-        height: 120
-      ),
+      appBar: MyCustomAppBar(height: 120),
       backgroundColor: Colors.red[600],
-      body: Observer
-        (builder: (context){
-      if(homeController.pokemons.length == 0 && homeController.pokemons != null){
-        return PokeProgress(height: 70, width: 70,);
-      }
-        if(homeController.pokemons == null){
-
-        }
+      body: Observer(
+        builder: (context) {
+          if (homeController.pokemons.length == 0 && homeController.pokemons != null ||
+              homeController.pokemons == null) {
+            return PokeProgress(
+              height: 70,
+              width: 70,
+            );
+          }
           var list = homeController.pokemons;
           return Container(
             height: MediaQuery.of(context).size.height,
@@ -50,12 +50,15 @@ class _HomePageState extends State<HomePage> {
                   physics: BouncingScrollPhysics(),
                   itemCount: list.length + 1,
                   addAutomaticKeepAlives: false,
-                  itemBuilder: (context, index){
-                    if(index < list.length){
-                    return PokemonTileWidget(list[index]);
-                    } else if(index > 1){
+                  itemBuilder: (context, index) {
+                    if (index < list.length) {
+                      return PokemonTileWidget(list[index]);
+                    } else if (index > 1) {
                       homeController.fetchPokemons();
-                      return PokeProgress(width: 50, height: 50,);
+                      return PokeProgress(
+                        width: 50,
+                        height: 50,
+                      );
                     } else {
                       return Container();
                     }
@@ -64,7 +67,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           );
-          },
+        },
       ),
     );
   }
